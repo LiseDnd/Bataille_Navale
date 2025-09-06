@@ -1,2 +1,3 @@
 # Bataille_Navale
-Création d'une version simple du jeu de la bataille navale afin de s'entraîner à l'orienté objet en C++
+
+Creation of a simple version of the game ‘Bataille Navale’ in order to practise object-oriented programming in C++.
