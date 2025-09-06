@@ -13,11 +13,11 @@ void generateBoatPosition(Boat& boat){
 
     /* Random selection of boat position (0 = vertical, 1 = horizontal) */
     if (orientation == 0) {
-        position[0] = randomInt(0, 9 - (boatSize - 1)); // start row
-        position[1] = randomInt(0, 9);                  // col
+        position[0] = randomInt(0, 9 - boatSize) + randomInt(0, boatSize);
+        position[1] = randomInt(0, 9);
     } else {
-        position[0] = randomInt(0, 9);                  // row
-        position[1] = randomInt(0, 9 - (boatSize - 1)); // start col
+        position[0] = randomInt(0, 9);
+        position[1] = randomInt(0, 9 - boatSize) + randomInt(0, boatSize);
     }
 
     boat.placement(orientation, position);
