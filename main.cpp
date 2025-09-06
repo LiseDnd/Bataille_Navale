@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include "fleet.hpp"
+#include "fleetPlacement.hpp"
 
 int main() {
     /* Initialisation of the game board */
@@ -15,6 +16,8 @@ int main() {
     fleet.reserve(fleetSize);
 
     createFleet(fleetSize, boatsLenght, fleet);
+
+    generateFleetPlacement(fleetSize, fleet, grid);
     
     return 0;
 }
