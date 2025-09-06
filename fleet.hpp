@@ -13,3 +13,11 @@ public:
 
     std::size_t size() const noexcept { return location_.size(); }
 };
+
+/**
+ * Creation of the boat feet
+ * @param fleetSize    [IN]
+ * @param boatsLenght  [IN]
+ * @param fleet        [OUT]
+ */
+void createFleet(int fleetSize, std::vector<int>& boatsLenght, std::vector<Boat>& fleet);
