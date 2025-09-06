@@ -1,0 +1,15 @@
+.vscode/
+build/
+out/
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+*.log
+*.a
+*.lib
+*.so
+*.dylib
+.DS_Store
+Thumbs.db
