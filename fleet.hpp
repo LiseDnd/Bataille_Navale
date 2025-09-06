@@ -4,7 +4,7 @@
 
 class Boat {
     std::size_t size_;            
-    std::vector<int> location_{3, 0}; 
+    std::vector<int> location_{0, 0, 0}; 
 
 public:
     explicit Boat(std::size_t size) : size_(size) {
@@ -12,15 +12,20 @@ public:
     }
 
     std::size_t size() const noexcept { return size_; }
-    
-    std::vector<int> placement(int orientation, std::vector<int>& position){
 
-        location_.emplace_back(static_cast<int>(orientation));
-        location_.emplace_back(static_cast<int>(position[0]));
-        location_.emplace_back(static_cast<int>(position[1]));
-        
+    std::vector<int> const& placement(int orientation, const std::vector<int>& position) {
+        if (orientation != 0 && orientation != 1)
+            throw std::invalid_argument("ERROR : orientation must be 0 (vertical) or 1 (horizontal)");
+        if (position.size() < 2)
+            throw std::invalid_argument("ERROR : position must be {row, col}");
+
+        location_[0] = orientation; 
+        location_[1] = position[0]; 
+        location_[2] = position[1]; 
+
         return location_;
     }
+
 
     int orientation() const noexcept { return location_[0]; }
     int row()         const noexcept { return location_[1]; }
