@@ -6,3 +6,12 @@
  * @return int
  */
 int randomInt(int min, int max);
+
+/**
+ * Asks the player for a cell to target and converts it to integers.
+ * @param outRow [OUT]
+ * @param outCol [OUT]
+ * 
+ * @return int
+ */
+bool readCoordNoThrow(int& outRow, int& outCol);

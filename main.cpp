@@ -2,6 +2,7 @@
 #include <iostream>
 #include "fleet.hpp"
 #include "fleetPlacement.hpp"
+#include "tools.hpp"
 
 int main() {
     /* Initialisation of the game board */
@@ -17,7 +18,14 @@ int main() {
 
     createFleet(fleetSize, boatsLenght, fleet);
 
+    /* Boat placement */
     generateFleetPlacement(fleetSize, fleet, grid);
+
+    /* Request for cell to target to player */
+    int outRow;
+    int outCol;
+
+    readCoordNoThrow(outRow, outCol);
     
     return 0;
 }

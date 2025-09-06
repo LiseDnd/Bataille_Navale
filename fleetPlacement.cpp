@@ -32,20 +32,25 @@ void generateFleetPlacement(int fleetSize, std::vector<Boat>& fleet, std::vector
         int boatSize = static_cast<int>(fleet[boat].size());
         int guard = 0;
         int attempts = 1000;
+        int orientation;
+        int row;
+        int column;
+        int rr;
+        int cc;
         bool placed = false;
 
         while (!placed && guard++ < attempts) {
             generateBoatPosition(fleet[boat]);
 
-            int orientation = fleet[boat].orientation(); 
-            int row = fleet[boat].row();
-            int column = fleet[boat].col();
+            orientation = fleet[boat].orientation(); 
+            row = fleet[boat].row();
+            column = fleet[boat].col();
 
             /* Check that there is no overlap */
             bool overlap = false;
             for (int boatElement = 0; boatElement < boatSize; ++boatElement) {
-                int rr = row + (orientation == 0 ? boatElement : 0);
-                int cc = column + (orientation == 1 ? boatElement : 0);
+                rr = row + (orientation == 0 ? boatElement : 0);
+                cc = column + (orientation == 1 ? boatElement : 0);
 
                 if (grid[rr][cc] != 0) {
                     overlap = true;
@@ -67,9 +72,9 @@ void generateFleetPlacement(int fleetSize, std::vector<Boat>& fleet, std::vector
             }
 
             if (!placed) {
-                int orientation = fleet[boat].orientation();
-                int row = fleet[boat].row();
-                int column = fleet[boat].col();
+                orientation = fleet[boat].orientation();
+                row = fleet[boat].row();
+                column = fleet[boat].col();
 
                 std::cerr << "Unable to place boat " << (boat+1)
                           << " size=" << boatSize
