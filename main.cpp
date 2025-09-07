@@ -38,6 +38,7 @@ int main() {
     {
         readCoordinates(outRow, outCol);
         targetResult(fleet, outRow, outCol, hit);
+        printGrid(fleet);
 
         if (maxHit == hit) {
             std::cout << "Congratulations, you have won!";
