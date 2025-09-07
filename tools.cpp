@@ -8,7 +8,7 @@ int randomInt(int min, int max) {
     return min + std::rand() % (max - min + 1);
 }
 
-bool readCoordNoThrow(int& outRow, int& outCol) {
+bool readCoordinates(int& outRow, int& outCol) {
     for (;;) {// Infinite loop
         char colChar;
         int column;
@@ -46,7 +46,7 @@ bool readCoordNoThrow(int& outRow, int& outCol) {
             return true;
         }
         else {
-            std::cout << "Invalid format \n";
+            std::cout << "Invalid format\n\n";
         }
     }
 }

@@ -14,4 +14,4 @@ int randomInt(int min, int max);
  * 
  * @return int
  */
-bool readCoordNoThrow(int& outRow, int& outCol);
+bool readCoordinates(int& outRow, int& outCol);
