@@ -1,37 +1,5 @@
 #pragma once
-#include <vector>
-#include <stdexcept>
-
-class Boat {
-    std::size_t size_;            
-    std::vector<int> location_{0, 0, 0}; 
-
-public:
-    explicit Boat(std::size_t size) : size_(size) {
-        if (size_ == 0) throw std::invalid_argument("Boat size must be > 0");
-    }
-
-    std::size_t size() const noexcept { return size_; }
-
-    std::vector<int> const& placement(int orientation, const std::vector<int>& position) {
-        if (orientation != 0 && orientation != 1)
-            throw std::invalid_argument("ERROR : orientation must be 0 (vertical) or 1 (horizontal)");
-        if (position.size() < 2)
-            throw std::invalid_argument("ERROR : position must be {row, col}");
-
-        location_[0] = orientation; 
-        location_[1] = position[0]; 
-        location_[2] = position[1]; 
-
-        return location_;
-    }
-
-
-    int orientation() const noexcept { return location_[0]; }
-    int row()         const noexcept { return location_[1]; }
-    int col()         const noexcept { return location_[2]; }
-
-};
+#include "boat.hpp"
 
 /**
  * Creation of the boat feet
@@ -40,3 +8,37 @@ public:
  * @param fleet        [OUT]
  */
 void createFleet(int fleetSize, std::vector<int>& boatsLenght, std::vector<Boat>& fleet);
+
+/**
+ * Place the boats on the game board.
+ * @param fleetSize [IN]
+ * @param fleet [IN]
+ * @param grid [OUT]
+ * 
+ */
+void generateFleetPlacement(int fleetSize, std::vector<Boat>& fleet, std::vector<std::vector<int>>& grid);
+
+class Fleet {
+    /* Initialisation of the game board */
+    std::vector<std::vector<int>> grid_; // Initialisation to 0 of a 10 by 10 grid
+    std::vector<int> boatsLenght_; 
+    std::vector<Boat> fleet_;
+
+ public:
+    Fleet() : grid_(10, std::vector<int>(10, 0)), boatsLenght_{5, 4, 3, 3, 2}
+    {
+        fleet_.reserve(boatsLenght_.size());
+        createFleet(boatsLenght_.size(), boatsLenght_, fleet_);
+    }
+
+    void placeFleet() {
+        generateFleetPlacement(static_cast<int>(fleet_.size()), fleet_, grid_);
+    }
+
+    std::vector<std::vector<int>>& grid() noexcept { return grid_; }
+
+    std::vector<Boat>& fleet() noexcept { return fleet_; }
+
+    const std::vector<int>& boatsLenght() const noexcept { return boatsLenght_; }
+    int size() const noexcept { return static_cast<int>(fleet_.size()); }
+};
