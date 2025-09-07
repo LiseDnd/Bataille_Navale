@@ -1,10 +1,14 @@
 #include <vector>
 #include <iostream>
+#include <ctime>
 #include "fleet.hpp"
 #include "tools.hpp"
 #include "grid.hpp"
 
 int main() {
+    /* Random initialisation */
+    std::srand(static_cast<unsigned>(std::time(nullptr)));
+
     /* Game initialisation */
     int row;
     int column;
